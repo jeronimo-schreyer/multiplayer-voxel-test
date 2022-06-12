@@ -1,0 +1,82 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckwdexuo7yhp8"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_by7ta"]
+
+[node name="main" type="Node3D"]
+script = ExtResource( "1_by7ta" )
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.819152, 0.573577, 0, -0.573577, 0.819152, 0, 30, -100)
+
+[node name="UI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Login" type="Control" parent="UI"]
+unique_name_in_owner = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Background" type="ColorRect" parent="UI/Login"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.882353)
+
+[node name="IPAddress" type="LineEdit" parent="UI/Login"]
+unique_name_in_owner = true
+anchor_left = 0.15625
+anchor_top = 0.475
+anchor_right = 0.859375
+anchor_bottom = 0.526667
+grow_horizontal = 2
+grow_vertical = 2
+text = "127.0.0.1"
+placeholder_text = "0.0.0.0"
+alignment = 1
+metadata/_edit_layout_mode = 1
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
+metadata/_edit_use_custom_anchors = true
+
+[node name="Label" type="Label" parent="UI/Login/IPAddress"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -24.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "IP Address"
+horizontal_alignment = 1
+metadata/_edit_layout_mode = 1
+
+[node name="ConnectToServer" type="Button" parent="UI/Login"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 104.0
+offset_top = 60.0
+offset_right = 288.0
+offset_bottom = 138.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Connect to Server"
+metadata/_edit_layout_mode = 1
+
+[node name="HostGame" type="Button" parent="UI/Login"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -272.0
+offset_top = 60.0
+offset_right = -88.0
+offset_bottom = 138.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Host A Game"
+metadata/_edit_layout_mode = 1
+
+[connection signal="pressed" from="UI/Login/ConnectToServer" to="." method="on_connect_to_server_pressed"]
+[connection signal="pressed" from="UI/Login/HostGame" to="." method="on_host_game_pressed"]
