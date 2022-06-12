@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://ydmrfxc6gg2w"]
+
+[node name="RemotePlayer" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
+
+[node name="VoxelViewer" type="VoxelViewer" parent="."]
+requires_data_block_notifications = true

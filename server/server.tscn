@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://bptvu2xjv4feo"]
+
+[ext_resource type="Script" path="res://server/server.gd" id="1_js64x"]
+
+[sub_resource type="Curve" id="Curve_vvko8"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0yntw"]
+
+[sub_resource type="VoxelGeneratorNoise2D" id="VoxelGeneratorNoise2D_6efiv"]
+height_start = 0.0
+height_range = 12.0
+noise = SubResource( "FastNoiseLite_0yntw" )
+curve = SubResource( "Curve_vvko8" )
+
+[sub_resource type="VoxelMesherTransvoxel" id="VoxelMesherTransvoxel_qt768"]
+
+[node name="VoxelTerrain" type="VoxelTerrain"]
+generator = SubResource( "VoxelGeneratorNoise2D_6efiv" )
+mesher = SubResource( "VoxelMesherTransvoxel_qt768" )
+block_enter_notification_enabled = true
+area_edit_notification_enabled = true
+script = ExtResource( "1_js64x" )
+edit_radius = 10.0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 99, 0)
+projection = 1
+size = 500.0
+far = 100.0

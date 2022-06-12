@@ -1,0 +1,4 @@
+[gd_resource type="VoxelStreamSQLite" format=3 uid="uid://cicq50kowbkd7"]
+
+[resource]
+database_path = "stream/world.db"

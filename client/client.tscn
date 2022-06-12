@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://mv8imssn1s1o"]
+
+[ext_resource type="Script" path="res://client/client.gd" id="1_2fmie"]
+[ext_resource type="Script" path="res://client/player.gd" id="2_2yhhl"]
+
+[sub_resource type="Curve" id="Curve_vvko8"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0yntw"]
+
+[sub_resource type="VoxelGeneratorNoise2D" id="VoxelGeneratorNoise2D_6efiv"]
+height_start = 0.0
+height_range = 12.0
+noise = SubResource( "FastNoiseLite_0yntw" )
+curve = SubResource( "Curve_vvko8" )
+
+[sub_resource type="VoxelMesherTransvoxel" id="VoxelMesherTransvoxel_qt768"]
+
+[node name="VoxelTerrain" type="VoxelTerrain"]
+generator = SubResource( "VoxelGeneratorNoise2D_6efiv" )
+mesher = SubResource( "VoxelMesherTransvoxel_qt768" )
+automatic_loading_enabled = false
+run_stream_in_editor = false
+script = ExtResource( "1_2fmie" )
+
+[node name="Player" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
+script = ExtResource( "2_2yhhl" )
+
+[node name="CameraRig" type="Node3D" parent="Player"]
+
+[node name="Camera3D" type="Camera3D" parent="Player/CameraRig"]
+unique_name_in_owner = true
+
+[node name="VoxelViewer" type="VoxelViewer" parent="Player/CameraRig/Camera3D"]
+view_distance = 192
