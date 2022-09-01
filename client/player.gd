@@ -39,9 +39,9 @@ func _input(event):
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-		rig.rotate_x(deg2rad(event.relative.y * -mouse_sensitivity))
-		rotate_y(deg2rad(event.relative.x * -mouse_sensitivity))
+		rig.rotate_x(deg_to_rad(event.relative.y * -mouse_sensitivity))
+		rotate_y(deg_to_rad(event.relative.x * -mouse_sensitivity))
 
 		var camera_rot = rig.rotation
-		camera_rot.x = clamp(camera_rot.x, deg2rad(-70), deg2rad(70))
+		camera_rot.x = clamp(camera_rot.x, deg_to_rad(-70), deg_to_rad(70))
 		rig.rotation = camera_rot

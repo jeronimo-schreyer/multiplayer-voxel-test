@@ -81,7 +81,7 @@ func send_voxel_buffer_to(msg_id, peer_id, buffer, block_position):
 	var peer = WS.get_peer(peer_id)
 	var stream_peer_buffer = StreamPeerBuffer.new()
 	var _size = serializer.serialize(stream_peer_buffer, buffer, true)
-	peer.put_packet(var2bytes([msg_id, stream_peer_buffer.data_array, block_position]))
+	peer.put_packet(var_to_bytes([msg_id, stream_peer_buffer.data_array, block_position]))
 
 
 func on_client_close_request(id, code, reason=""):
@@ -108,5 +108,5 @@ func on_client_disconnected(id, clean=true):
 
 # update voxel viewer position
 func on_received_data(id):
-	var packet = bytes2var(WS.get_peer(id).get_packet())
+	var packet = bytes_to_var(WS.get_peer(id).get_packet())
 	get_node(str(id)).global_transform = packet

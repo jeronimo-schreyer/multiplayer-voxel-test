@@ -28,7 +28,7 @@ func _process(_delta):
 
 		# update position when its actually connected
 		if WS.get_peer(1).is_connected_to_host():
-			WS.get_peer(1).put_packet(var2bytes($Player.global_transform))
+			WS.get_peer(1).put_packet(var_to_bytes($Player.global_transform))
 
 
 func _exit_tree():
@@ -71,7 +71,7 @@ func on_client_disconnected(clean=true):
 
 
 func on_received_data():
-	var packet = bytes2var(WS.get_peer(1).get_packet())
+	var packet = bytes_to_var(WS.get_peer(1).get_packet())
 	var voxel_buffer = deserialize_voxel_buffer(packet[1])
 	match packet[0]:
 		Server.PacketType.BLOCK_DATA:
