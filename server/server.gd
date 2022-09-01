@@ -54,8 +54,7 @@ func _unhandled_input(event):
 
 func _on_data_block_entered(info):
 	var peer_id = info.get_network_peer_id()
-	if info.are_voxels_edited():
-		send_voxel_buffer_to(PacketType.BLOCK_DATA, peer_id, info.get_voxels(), info.get_position())
+	send_voxel_buffer_to(PacketType.BLOCK_DATA, peer_id, info.get_voxels(), info.get_position())
 
 
 func _on_area_edited(origin, size):
