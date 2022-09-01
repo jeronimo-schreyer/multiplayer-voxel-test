@@ -78,4 +78,4 @@ func on_received_data():
 			try_set_block_data(packet[2], voxel_buffer)
 		Server.PacketType.VOXEL_BUFFER:
 			printt("Client::on_received_data", str(voxel_buffer.get_size()))
-			tool.paste(packet[2], voxel_buffer, 1 << VoxelBuffer.CHANNEL_SDF, false)
+			tool.paste(packet[2], voxel_buffer, 1 << VoxelBuffer.CHANNEL_SDF, VoxelBuffer.CHANNEL_SDF)
